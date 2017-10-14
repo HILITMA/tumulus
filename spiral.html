@@ -1,0 +1,66 @@
+<html>
+<body>
+<center>
+	<div>
+	<svg id="memgar" width="800" height="800">
+		<path id="Spiral" stroke-width="2" fill="none" stroke="maroon"></path>
+	</svg>
+	</div>
+</center>
+
+
+<script>
+/*
+The spiral is an SVG path initializeded with an M command at its center, with
+enough following S command points to provide a 'smooth' curve. The points are
+created using the equation for a spiral.
+*/
+function go()
+{
+	//---dir=1: clockwise, dir=-1: counterclockwise
+  var dir=1,
+      SpiralPnts=520,
+	    CenterX=400,
+	    CenterY=400,
+	    Separation=10,
+	    S=Separation/(2*Math.PI),
+	    Revs=26;
+	//---degrees of seperation between points---
+	    DegSep=(2*Math.PI*Revs/SpiralPnts);
+
+	//---the path element---
+	for(var i=0;i<SpiralPnts;i++)
+	{
+		var NextAngle=dir*DegSep*i
+		var Ax=(S*NextAngle)*Math.cos(NextAngle)+CenterX
+		var Ay=(S*NextAngle)*Math.sin(NextAngle)+CenterY
+		if(i==0)
+			var pathPnts="M"+rnd1(Ax)+" "+rnd1(Ay)+" S "
+		else
+		   pathPnts+=rnd1(Ax)+" "+rnd1(Ay)+" "
+	}
+
+	if(SpiralPnts/2+"".indexOf(".5")!=-1)
+		pathPnts+=rnd1(Ax)+" "+rnd1(Ay) //---last point 'odd' to finish curve--
+
+	Spiral.setAttribute("d",pathPnts)
+	mySvg.setAttribute("viewBox","200 200 800 800")
+
+}
+var mySvg;
+//--returns 1 decimal place---
+function rnd1(num)
+{
+	var dp1=Math.round(num*10)/10
+	return dp1
+}
+function init()
+{
+  mySvg=document.getElementById('memgar')
+	go()
+
+}
+document.addEventListener("onload",init(),false)
+</script>
+</body>
+</html>
