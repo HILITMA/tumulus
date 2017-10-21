@@ -1,0 +1,12 @@
+h1 {
+    font-family: "Alef", sans-serif;
+    font-size: 50px;
+    position: relative;
+    top: 500px;
+    right: 146px;
+}
+#memgar {
+    top:0px;
+    left: 0px;
+    z-index: -1;
+}

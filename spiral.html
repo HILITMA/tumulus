@@ -1,14 +1,20 @@
 <html>
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Alef" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+1    <script src="svg-pan-zoom.min.js"></script>
+</head>
 <body>
 <center>
 	<div>
-	<svg id="memgar" width="800" height="800">
+
+	<svg id="memgar" width="600" height="600">
     <animateTransform attributeName="transform" attributeType="XML"
       type="scale" from="9" to="1" begin="0s" dur="6s" repeatCount="1"
       additive="sum" /> 
 <!-- Next is Aharon's photo made by jon phillips and converted to svg using
 http://picsvg.com/ -->
-<g transform="translate(120,700) scale(0.200000,-0.200000)"
+<g transform="translate(60,600) scale(0.200000,-0.200000)"
 fill="none" stroke-width="3" stroke="black">
 <path d="M996 3031 c-7 -10 22 -37 30 -28 9 8 -3 37 -15 37 -5 0 -12 -4 -15
 -9z"/>
@@ -875,8 +881,15 @@ c-13 -62 -18 -84 -22 -96 -2 -7 -4 -16 -5 -20 -2 -14 -21 -32 -29 -27 -4 3
 -10 -4 -10 -10z"/>
 </g>
     <path id="Spiral" fill="none" stroke="gold"
-      style="stroke-width: 2px; stroke-dasharray: 10 5 7 11 3 3 9"
+      style="stroke-width: 3px; stroke-dasharray: 10 5 7 11 3 3 9"
       ></path>
+        <text x="110" y="600" font-family="Alef" font-size="50">
+            Aaron Hillel Swartz 
+       </text>
+        <text x="120" y="650" font-family="Alef" font-size="25">
+            November 8, 1986 &#x2721;
+            January 11, 2013
+       </text>
 	</svg>
 	</div>
 </center>
@@ -895,9 +908,9 @@ function draw()
 {
 	//---dir=1: clockwise, dir=-1: counterclockwise
   var dir=1,
-      SpiralPnts=520,
-	    CenterX=400,
-	    CenterY=400,
+      SpiralPnts=260,
+	    CenterX=300,
+	    CenterY=300,
 	    Separation=12,
 	    S=Separation/(2*Math.PI),
 	    Revs=26;
@@ -916,8 +929,6 @@ function draw()
 		   pathPnts+=rnd1(Ax)+" "+rnd1(Ay)+" "
 	}
 
-	if(SpiralPnts/2+"".indexOf(".5")!=-1)
-		pathPnts+=rnd1(Ax)+" "+rnd1(Ay) //---last point 'odd' to finish curve--
 
 	Spiral.setAttribute("d",pathPnts)
 	// mySvg.setAttribute("viewBox","200 200 800 800")
@@ -936,9 +947,30 @@ function animate()
 function init()
 {
   mySvg=document.getElementById('memgar')
-	draw()
+  draw()
   animate()
-
+  svgPanZoom('#memgar', {
+      viewportSelector: '.svg-pan-zoom_viewport'
+    , panEnabled: true
+    , controlIconsEnabled: true
+    , zoomEnabled: true
+    , dblClickZoomEnabled: true
+    , mouseWheelZoomEnabled: true
+    , preventMouseEventsDefault: true
+    , zoomScaleSensitivity: 0.2
+    , minZoom: 0.5
+    , maxZoom: 10
+    , fit: true
+    , contain: false
+    , center: true
+    , refreshRate: 'auto'
+    , beforeZoom: function(){}
+    , onZoom: function(){}
+    , beforePan: function(){}
+    , onPan: function(){}
+    , onUpdatedCTM: function(){}
+    , eventsListenerElement: null
+    });
 }
 document.addEventListener("onload",init(),false)
 </script>
