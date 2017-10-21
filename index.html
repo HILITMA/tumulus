@@ -3,13 +3,13 @@
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css?family=Alef" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
-1    <script src="svg-pan-zoom.min.js"></script>
+    <script src="svg-pan-zoom.min.js"></script>
 </head>
 <body>
 <center>
 	<div>
 
-	<svg id="memgar" width="600" height="600">
+	<svg id="tumulus" width="600" height="600">
     <animateTransform attributeName="transform" attributeType="XML"
       type="scale" from="9" to="1" begin="0s" dur="6s" repeatCount="1"
       additive="sum" /> 
@@ -947,10 +947,10 @@ function animate()
 }
 function init()
 {
-  mySvg=document.getElementById('memgar')
+  mySvg=document.getElementById('tumulus')
   draw()
   animate()
-  svgPanZoom('#memgar', {
+  svgPanZoom('#tumulus', {
       viewportSelector: '.svg-pan-zoom_viewport'
     , panEnabled: true
     , controlIconsEnabled: true
