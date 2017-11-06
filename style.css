@@ -1,5 +1,5 @@
 body { font-family: "Alef", sans-serif; }
-a:visited {color: black;}
+a, a:visited, a:hover {color: black;}
 h1 {
     font-size: 50px;
     position: relative;
