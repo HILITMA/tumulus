@@ -1,13 +1,8 @@
 body { font-family: "Alef", sans-serif; }
 a, a:visited, a:hover {color: black;}
 center { max-width: 800px; margin: 10px auto;}
-h1 {
-  font-size: 50px;
-  position: relative;
-  top: 500px;
-  right: 146px;
-}
 
+h1 { margin-top: 0; }
 #tumulus-container {
 	position: relative;
 	width: 100%;
@@ -16,7 +11,7 @@ h1 {
 	overflow: hidden;
 }
 
-#tumulus {
+#tumulus, #illustration {
   position: absolute;
   top: 0;
   left: 0;
