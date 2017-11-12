@@ -1,13 +1,23 @@
 body { font-family: "Alef", sans-serif; }
 a, a:visited, a:hover {color: black;}
+center { max-width: 800px; margin: 10px auto;}
 h1 {
-    font-size: 50px;
-    position: relative;
-    top: 500px;
-    right: 146px;
+  font-size: 50px;
+  position: relative;
+  top: 500px;
+  right: 146px;
 }
-#memgar {
-    top:0px;
-    left: 0px;
-    z-index: -1;
+
+#tumulus-container {
+	position: relative;
+	width: 100%;
+	padding-bottom: 100%;
+	vertical-align: middle;
+	overflow: hidden;
+}
+
+#tumulus {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
