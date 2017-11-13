@@ -1,0 +1,27 @@
+[
+    {"type": "bookmark",
+     "content": "This is a great site.",
+     "when": "13/11/2012 11:52:39 GMT+0200 (EET)",
+     "where": "https://aaron.bookmarked.me.com",
+     "source": "https://delicious.com/....."
+    },
+    {"type": "twitt",
+     "content": "You're wrong",
+     "when": "13/11/2012 13:52:39 GMT+0200 (EET)",
+     "source": "https://twitter.com/....."
+    },
+    {"type": "photo",
+     "content": "http://s3.amazon.com/<more letters and numbers>.png",
+     "when": "16/11/2012 11:52:39 GMT+0200 (EET)",
+     "where": "In MIT locker room",
+     "who": "self",
+     "who_took_it": "MIT security",
+     "source": "http://s3.amazon.com/<more letters and numbers>.png"
+    },
+    {"type": "post",
+     "content": "`this is markdown of aaron's post`",
+     "when": "18/11/2012 11:52:39 GMT+0200 (EET)",
+     "who": "self",
+     "source": "http://aaronsw.com/...."
+    }
+]
