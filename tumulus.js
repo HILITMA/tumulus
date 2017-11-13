@@ -68,7 +68,20 @@ window.onload = function () {
 		, bullseye = document.getElementById("bullseye")
 		, illustration = document.getElementById("illustration");
 
-    tumulus.zoom = 1;
+	bullseye.circle = document.getElementById("bullseye-circle")
+
+	function zoom(level) {
+			tumulus.zoom = level;
+			bullseye.circle.setAttribute("r", 10+level*2)
+	};
+
+	function reset() {
+		console.log("reset");
+		illustration.show();
+		bullseye.hide()
+		zoom(1);
+		tumulus.zoom = 1;
+	};
 
     illustration.show = function() {
         illustration.style['opacity'] = "0.5";
@@ -76,6 +89,7 @@ window.onload = function () {
     illustration.hide = function() { 
         illustration.style['opacity'] = "0";
     };
+
     bullseye.show = function() {
         bullseye.style['fill-opacity'] = "0.2";
         bullseye.style['stroke-width'] = "10px"
@@ -90,8 +104,7 @@ window.onload = function () {
     };
 
     tumulus.setOnZoom(function(level){
-		console.log(level);
-        tumulus.zoom = level;
+		zoom(level);
         if (level > 1) {
             bullseye.show();
 			illustration.hide();
@@ -101,19 +114,16 @@ window.onload = function () {
 			illustration.show();
 		} 
 	});
-
     tumulus.setOnPan(function(point){
-		console.log(point);
-		  if (tumulus.zoom == 1
-		      && point.x == point.y
-		      && point.x == 42.857139587402344)
-			illustration.show();
-		else {
             bullseye.move(point);
             bullseye.show();
 			illustration.hide();
-        }
     });
+
+    var resetPZC = document.getElementById('svg-pan-zoom-reset-pan-zoom');
+    resetPZC.addEventListener('click', reset, false);
+
+	reset()
 
 }
 
