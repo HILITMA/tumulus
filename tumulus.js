@@ -77,9 +77,9 @@ window.onload = function () {
 
 	function reset() {
 		illustration.show();
-		bullseye.hide()
-		zoom(1);
+		bullseye.hide();
 		tumulus.zoom = 1;
+		zoom(1)
 	};
 
     illustration.show = function() {
@@ -91,7 +91,17 @@ window.onload = function () {
 
     bullseye.show = function() {
         bullseye.style['fill-opacity'] = "0.2";
-        bullseye.style['stroke-width'] = "10px"
+        bullseye.style['stroke-width'] = (
+			tumulus.zoom*2+1
+			+"px"
+		);
+/*
+		console.log((
+			str(tumulus.zoom*2+5)
+			+"px"
+		));
+*/
+
     };
     bullseye.hide = function() { 
         bullseye.style['fill-opacity'] = "0";

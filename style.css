@@ -25,10 +25,12 @@ h2 {
   top: 0;
   left: 0;
 }
+#tumulus { opacity: 0.8; }
 #illustration { opacity: 0.5; }
 #bullseye {
     fill-opacity: 0;
     fill: red;
     stroke: red;
     stroke-width:0;
+    opacity: 1;
 }
