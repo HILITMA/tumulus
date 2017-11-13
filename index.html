@@ -7,19 +7,22 @@
 </head>
 <body>
 <center>
-<div id="tumulus-container">
+  <div id="tumulus-container">
+    <object id="illustration" data="Aaron-Swartz-Stylized.svg" 
+      width="100%" height="100%" type="image/svg+xml"></object>
 
-  <object id="illustration" data="Aaron-Swartz-Stylized.svg" 
-    width="100%" height="100%" type="image/svg+xml"></object>
-  <svg id="tumulus" viewBox="-30 -10 630 630" width="100%" height="100%" 
-    preserveAspectRatio="xMinYMin meet">
-    <path id="Spiral" fill="none" stroke="gold"
-      style="stroke-width: 3px; stroke-dasharray: 10 5 7 11 3 3 9"
-      ></path>
-	</svg>
-	</div>
-    <h1>Aaron Hillel Swartz</h1>
-    <h2>November 8, 1986 &#x2721; January 11, 2013</h2>
+    <svg id="bullseye" viewBox="-50 -50 700 700">
+      <circle cx="300" cy="300" r="30"/>
+    </svg>
+    <svg id="tumulus" viewBox="-50 -50 700 700" width="100%" height="100%" 
+      preserveAspectRatio="xMinYMin meet">
+      <path id="Spiral" fill="none" stroke="gold"
+        style="stroke-width: 3px; stroke-dasharray: 10 5 7 11 3 3 9"
+        ></path>
+    </svg>
+  </div>
+  <h1>Aaron Hillel Swartz</h1>
+  <h2>November 8, 1986 &#x2721; January 11, 2013</h2>
   <p>
     <a href="https://archive.org/details/TheInternetsOwnBoyTheStoryOfAaronSwartz">
       The Internet's own boy
@@ -51,8 +54,8 @@ function draw()
       SpiralPnts=520,
 	    CenterX=300,
 	    CenterY=300,
-	    Separation=12,
-	    S=Separation/(2*Math.PI),
+        // TODO: calc the sepertion based o
+	    S=1.93,
 	    Revs=26;
 	//---degrees of seperation between points---
 	    DegSep=(2*Math.PI*Revs/SpiralPnts);
@@ -66,8 +69,9 @@ function draw()
 		if(i==0)
 			var pathPnts="M"+rnd1(Ax)+" "+rnd1(Ay)+" S "
 		else
-		   pathPnts+=rnd1(Ax)+" "+rnd1(Ay)+" "
+		   pathPnts += rnd1(Ax)+" "+rnd1(Ay)+" "
 	}
+  pathPnts+=Ax+" "+Ay;
 
 
 	Spiral.setAttribute("d",pathPnts)
@@ -81,15 +85,7 @@ function rnd1(num)
 }
 window.onload = function () {
   draw()
-  /*
-  var svg2 = svgPanZoom('#illustration', {
-    zoomEnabled: true
-    , controlIconsEnabled: true
-    , minZoom: 0.1
-    , maxZoom: 10
-  }),
-    */
-  var   svg1 = svgPanZoom('#tumulus', {
+  var tumulus = svgPanZoom('#tumulus', {
       viewportSelector: '.svg-pan-zoom_viewport'
     , panEnabled: true
     , controlIconsEnabled: true
@@ -98,8 +94,8 @@ window.onload = function () {
     , mouseWheelZoomEnabled: true
     , preventMouseEventsDefault: true
     , zoomScaleSensitivity: 0.2
-    , minZoom: 0.1
-    , maxZoom: 10
+    , minZoom: 0.5
+    , maxZoom: 11
     , fit: true
     , contain: false
     , center: true
@@ -110,26 +106,38 @@ window.onload = function () {
     , onPan: function(){}
     , onUpdatedCTM: function(){}
     , eventsListenerElement: null
-    });
-  /*
-    svg1.setOnZoom(function(level){
-      svg2.zoom(level)
-      svg2.pan(svg1.getPan())
+    })
+    , bullseye = document.getElementById("bullseye");
+
+    tumulus.zoom = 1;
+
+    bullseye.show = function() {
+        bullseye.style['fill-opacity'] = "0.2";
+        bullseye.style['stroke-width'] = "10px"
+    };
+    bullseye.hide = function() { 
+        bullseye.style['fill-opacity'] = "0";
+        bullseye.style['stroke-width'] = "0"
+    };
+    bullseye.move = function () { 
+        // move the bullseye to the closest segment and update the age indicator
+        null
+    };
+
+    tumulus.setOnZoom(function(level){
+        tumulus.zoom = level;
+      console.log(level);
+        if (level > 3) 
+            bullseye.show()
+        else
+            bullseye.hide();
     });
 
-    svg1.setOnPan(function(point){
-      svg2.pan(point)
+    tumulus.setOnPan(function(point){
+      if (tumulus.zoom > 3) {
+          bullseye.move(point)
+      }
     });
-
-    svg2.setOnZoom(function(level){
-      svg1.zoom(level)
-      svg1.pan(svg2.getPan())
-    });
-
-    svg2.setOnPan(function(point){
-      svg1.pan(point)
-    });
-    */
 
 }
 </script>
