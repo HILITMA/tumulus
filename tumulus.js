@@ -76,7 +76,6 @@ window.onload = function () {
 	};
 
 	function reset() {
-		console.log("reset");
 		illustration.show();
 		bullseye.hide()
 		zoom(1);
